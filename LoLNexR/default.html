@@ -17,18 +17,28 @@
         jQuery.isUnsafe = true;
     </script>
     <script src="Scripts/angular.min.js"></script>
+    <script src="js/apikey.js"></script>
     <script src="/js/default.js"></script>
 </head>
 <body ng-controller="SummonersCtrl">
     <div>
         <select ng-model="region">
+            <option value="br">BR</option>
+            <option value="eune">EUNE</option>
             <option value="euw">EUW</option>
+            <option value="kr">KR</option>
+            <option value="las">LAS</option>
+            <option value="lan">LAN</option>
             <option value="na">NA</option>
+            <option value="oce">OCE</option>
+            <option value="tr">TR</option>
+            <option value="ru">RU</option>
         </select>
-        <input type="text" ng-model="query" />
-        <input type="button" value="Search" />
-        <h1>{{query}}</h1>
-        <strong>{{region}}</strong>
+        <input type="text" ng-model="name" />
+        <input type="button" value="Search" ng-click="getSummoner(region, name)"/>
+        <h1>{{name}}</h1>
+        <p>{{summoner | json}}</p>
+        <strong ng-show="summoner">The ID of the requested summoner is: {{summoner[name].id}}</strong>
     </div>
 </body>
 </html>

@@ -32,9 +32,18 @@
 
     var ngApp = angular.module('app', []);
 
-    ngApp.controller('SummonersCtrl', function ($scope) {
-        $scope.start = "Let's do this!";
-    });
+    // Summoners controller
+    ngApp.controller('SummonersCtrl', ['$scope', '$http', function ($scope, $http) {
+
+        // web service returning summoner data
+        $scope.getSummoner = function (region, name) {
+            $scope.summoner = {};
+            $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v1.4/summoner/by-name/" + name + "?api_key=" + apikey)
+                .success(function (data) {
+                    $scope.summoner = data;
+                });
+        }
+    }]);
 
     app.start();
 })();
