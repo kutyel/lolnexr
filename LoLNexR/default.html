@@ -20,6 +20,15 @@
     <script src="/js/default.js"></script>
 </head>
 <body ng-controller="SummonersCtrl">
-    <h1>{{start}}</h1>
+    <div>
+        <select ng-model="region">
+            <option value="euw">EUW</option>
+            <option value="na">NA</option>
+        </select>
+        <input type="text" ng-model="query" />
+        <input type="button" value="Search" />
+        <h1>{{query}}</h1>
+        <strong>{{region}}</strong>
+    </div>
 </body>
 </html>
