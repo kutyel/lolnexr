@@ -36,9 +36,10 @@
         </select>
         <input type="text" ng-model="name" />
         <input type="button" value="Search" ng-click="getSummoner(region, name)"/>
-        <h1>{{name}}</h1>
-        <p>{{summoner | json}}</p>
-        <strong ng-show="summoner">The ID of the requested summoner is: {{summoner[name].id}}</strong>
+        <h1 ng-show="summoner">{{summoner.name}}</h1>
+        <h2>{{league.tier}} {{league.entries[0].division}}</h2>
+        <p>{{league | json}}</p>
+        <strong ng-show="summoner">The ID of the requested summoner is: {{summoner.id}}</strong>
     </div>
 </body>
 </html>

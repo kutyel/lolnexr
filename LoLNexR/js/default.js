@@ -35,12 +35,18 @@
     // Summoners controller
     ngApp.controller('SummonersCtrl', ['$scope', '$http', function ($scope, $http) {
 
-        // web service returning summoner data
+        // Web service returning summoner data
         $scope.getSummoner = function (region, name) {
             $scope.summoner = {};
+            // Summoner basic data
             $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v1.4/summoner/by-name/" + name + "?api_key=" + apikey)
-                .success(function (data) {
-                    $scope.summoner = data;
+                .success(function (summoner) {
+                    $scope.summoner = summoner[name];
+                    // Summoner league data
+                    $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v2.4/league/by-summoner/" + summoner[name].id + "/entry?api_key=" + apikey)
+                        .success(function (league) {
+                            $scope.league = league[summoner[name].id][0];
+                        });
                 });
         }
     }]);
