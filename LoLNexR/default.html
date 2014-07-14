@@ -22,15 +22,14 @@
 </head>
 <body ng-controller="SummonersCtrl">
     <div>
-        <select ng-model="region" ng-repeat="region in regions">
-            <option value="{{region.value}}">{{region.name}}</option>
+        <select ng-model="region">
+            <option ng-repeat="region in regions" value="{{region.value}}">{{region.name}}</option>
         </select>
         <input type="text" ng-model="name" />
         <input type="button" value="Search" ng-click="getSummoner(region, name)"/>
         <h1 ng-show="summoner">{{summoner.name}}</h1>
-        <h2>{{league.tier}} {{league.entries[0].division}}</h2>
+        <strong>{{league.tier}} {{league.entries[0].division}}</strong>
         <p>{{league | json}}</p>
-        <strong ng-show="summoner">The ID of the requested summoner is: {{summoner.id}}</strong>
     </div>
 </body>
 </html>
