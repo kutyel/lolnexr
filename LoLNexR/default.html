@@ -22,17 +22,8 @@
 </head>
 <body ng-controller="SummonersCtrl">
     <div>
-        <select ng-model="region">
-            <option value="br">BR</option>
-            <option value="eune">EUNE</option>
-            <option value="euw">EUW</option>
-            <option value="kr">KR</option>
-            <option value="las">LAS</option>
-            <option value="lan">LAN</option>
-            <option value="na">NA</option>
-            <option value="oce">OCE</option>
-            <option value="tr">TR</option>
-            <option value="ru">RU</option>
+        <select ng-model="region" ng-repeat="region in regions">
+            <option value="{{region.value}}">{{region.name}}</option>
         </select>
         <input type="text" ng-model="name" />
         <input type="button" value="Search" ng-click="getSummoner(region, name)"/>
