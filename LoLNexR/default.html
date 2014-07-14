@@ -29,7 +29,12 @@
         <input type="button" value="Search" ng-click="getSummoner(region, name)"/>
         <h1 ng-show="summoner">{{summoner.name}}</h1>
         <strong>{{league.tier}} {{league.entries[0].division}}</strong>
-        <p>{{league | json}}</p>
+        <!--<p>{{games | json}}</p>-->
+    </div>
+    <div>
+        <table>
+            <tr ng-repeat="game in games.games"><td>{{game.gameMode}}-{{game.subType}}</td></tr>
+        </table>
     </div>
 </body>
 </html>

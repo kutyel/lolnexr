@@ -53,14 +53,19 @@
         // Web service returning summoner data
         $scope.getSummoner = function (region, name) {
             $scope.summoner = {};
-            // Summoner basic data
+            // Basic data
             $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v1.4/summoner/by-name/" + name + "?api_key=" + apikey)
                 .success(function (summoner) {
                     $scope.summoner = summoner[name];
-                    // Summoner league data
+                    // League data
                     $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v2.4/league/by-summoner/" + summoner[name].id + "/entry?api_key=" + apikey)
                         .success(function (league) {
                             $scope.league = league[summoner[name].id][0];
+                            // Recent games
+                            $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v1.3/game/by-summoner/" + summoner[name].id + "/recent?api_key=" + apikey)
+                                .success(function (games) {
+                                    $scope.games = games;
+                                });
                         });
                 });
         }
