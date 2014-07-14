@@ -38,16 +38,16 @@
         // Static array of regions
         $scope.regions = 
         [
-            { name: "", value: "" },
-            { name: "", value: "" },
-            { name: "", value: "" },
-            { name: "", value: "" },
-            { name: "", value: "" },
-            { name: "", value: "" },
-            { name: "", value: "" },
-            { name: "", value: "" },
-            { name: "", value: "" },
-            { name: "", value: "" }
+            { name: "BR", value: "br" },
+            { name: "EUNE", value: "eune" },
+            { name: "EUW", value: "euw" },
+            { name: "KR", value: "kr" },
+            { name: "LAS", value: "las" },
+            { name: "LAN", value: "lan" },
+            { name: "LAN", value: "na" },
+            { name: "OCE", value: "oce" },
+            { name: "TR", value: "tr" },
+            { name: "RU", value: "ru" }
         ];
 
         // Web service returning summoner data
