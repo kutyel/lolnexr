@@ -63,8 +63,8 @@
                             $scope.league = league[summoner[name].id][0];
                             // Recent games
                             $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v1.3/game/by-summoner/" + summoner[name].id + "/recent?api_key=" + apikey)
-                                .success(function (games) {
-                                    $scope.games = games;
+                                .success(function (recent) {
+                                    $scope.games = recent.games;
                                 });
                         });
                 });
