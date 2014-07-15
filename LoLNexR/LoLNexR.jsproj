@@ -56,6 +56,9 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <Content Include="default.html" />
+    <Content Include="images\leagues\challenger.png" />
+    <Content Include="images\leagues\SILVER\III.png" />
+    <Content Include="images\leagues\unranked.png" />
     <Content Include="images\logo.scale-100.png" />
     <Content Include="images\smalllogo.scale-100.png" />
     <Content Include="images\splashscreen.scale-100.png" />

@@ -22,14 +22,39 @@
 </head>
 <body ng-controller="SummonersCtrl">
     <div>
-        <select ng-model="region">
-            <option ng-repeat="region in regions" value="{{region.value}}">{{region.name}}</option>
-        </select>
-        <input type="text" ng-model="name" />
-        <input type="button" value="Search" ng-click="getSummoner(region, name)"/>
-        <h1 ng-show="summoner">{{summoner.name}}</h1>
-        <strong>{{league.tier}} {{league.entries[0].division}}</strong>
-        <p>{{league | json}}</p>
+        <form novalidate ng-submit="getSummoner(region, name)">
+            <select ng-model="region" required>
+                <option ng-repeat="region in regions" value="{{region.value}}">{{region.name}}</option>
+            </select>
+            <input type="text" ng-model="name" required />
+            <input type="submit" value="Search" />
+        </form>
+        <div ng-show="summoner">
+            <h1>{{summoner.name}}</h1>
+            <table>
+                <tr>
+                    <td><p>Ranked Teams (3v3)</p></td>
+                    <td><p>Solo/Duo Queue</p></td>
+                    <td><p>Ranked Teams (5v5)</p></td>
+                </tr>
+                <tr>
+                    <td><p>{{league.name}}</p></td>
+                    <td><p>{{league.name}}</p></td>
+                    <td><p>{{league.name}}</p></td>
+                </tr>
+                <tr>
+                    <td><img ng-src="{{imageUrl}}" /></td>
+                    <td><img ng-src="{{imageUrl}}" /></td>
+                    <td><img ng-src="{{imageUrl}}" /></td>
+                </tr>
+                <tr>
+                    <td><strong>{{league.tier}} {{league.entries[0].division}}</strong> ({{league.entries[0].leaguePoints}} LP)</td>
+                    <td><strong>{{league.tier}} {{league.entries[1].division}}</strong> ({{league.entries[0].leaguePoints}} LP)</td>
+                    <td><strong>{{league.tier}} {{league.entries[2].division}}</strong> ({{league.entries[0].leaguePoints}} LP)</td>
+                </tr>
+            </table>
+            <p>{{league | json}}</p>
+        </div>
     </div>
 </body>
 </html>
