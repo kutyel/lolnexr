@@ -32,6 +32,11 @@
 
     var ngApp = angular.module('app', []);
 
+    // Route config
+    ngApp.config(['$compileProvider', function ($compileProvider) {
+        $compileProvider.imgSrcSanitizationWhitelist('images/');
+    }]);
+
     // Summoners controller
     ngApp.controller('SummonersCtrl', ['$scope', '$http', function ($scope, $http) {
         
@@ -60,9 +65,11 @@
                     // Summoner league data
                     $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v2.4/league/by-summoner/" + summoner[name].id + "/entry?api_key=" + apikey)
                         .success(function (league) {
-                            $scope.league = league[summoner[name].id][0];
-                            $scope.imageUrl = // !!league ? "images/leagues/" + league[summoner[name].id][0].tier + "/" + league[summoner[name].id][0].entries[0].division + ".png" :
-                                "images/leagues/unranked.png";
+                            var leagues = league[summoner[name].id];
+                            for (var l in leagues)
+                                leagues[l]["imageUrl"] = !!league ? "images/leagues/" + leagues[l].tier + "/" + leagues[l].entries[l].division + ".png" :
+                                    "images/leagues/unranked.png";
+                            $scope.leagues = leagues;
                         });
                 });
         }

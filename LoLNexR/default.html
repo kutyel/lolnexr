@@ -38,22 +38,16 @@
                     <td><p>Ranked Teams (5v5)</p></td>
                 </tr>
                 <tr>
-                    <td><p>{{league.name}}</p></td>
-                    <td><p>{{league.name}}</p></td>
-                    <td><p>{{league.name}}</p></td>
+                    <td><p ng-repeat="league in leagues">{{league.name}}</p></td>
                 </tr>
                 <tr>
-                    <td><img ng-src="{{imageUrl}}" /></td>
-                    <td><img ng-src="{{imageUrl}}" /></td>
-                    <td><img ng-src="{{imageUrl}}" /></td>
+                    <td><img ng-repeat="league in leagues" ng-src="{{league.imageUrl}}" /></td>
                 </tr>
                 <tr>
-                    <td><strong>{{league.tier}} {{league.entries[0].division}}</strong> ({{league.entries[0].leaguePoints}} LP)</td>
-                    <td><strong>{{league.tier}} {{league.entries[1].division}}</strong> ({{league.entries[0].leaguePoints}} LP)</td>
-                    <td><strong>{{league.tier}} {{league.entries[2].division}}</strong> ({{league.entries[0].leaguePoints}} LP)</td>
+                    <td><strong ng-repeat="league in leagues">{{league.tier}} {{league.entries[0].division}}</strong> ({{league.entries[0].leaguePoints}} LP)</td>
                 </tr>
             </table>
-            <p>{{league | json}}</p>
+            <p>{{leagues | json}}</p>
         </div>
     </div>
 </body>
