@@ -65,6 +65,7 @@
                     // Summoner league data
                     $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v2.4/league/by-summoner/" + summoner[name].id + "/entry?api_key=" + apikey)
                         .success(function (league) {
+                            $scope.data = league;
                             var leagues = league[summoner[name].id];
                             for (var l in leagues)
                                 leagues[l]["imageUrl"] = !!league ? "images/leagues/" + leagues[l].tier + "/" + leagues[l].entries[l].division + ".png" :

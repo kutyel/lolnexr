@@ -1,0 +1,66 @@
+﻿{"28959701": [
+   {
+      "queue": "RANKED_SOLO_5x5",
+      "name": "Lulu's Elite",
+      "entries": [{
+         "leaguePoints": 0,
+         "isFreshBlood": false,
+         "isHotStreak": false,
+         "division": "V",
+         "isInactive": false,
+         "isVeteran": true,
+         "playerOrTeamName": "C0dRiX",
+         "playerOrTeamId": "28959701",
+         "wins": 222
+      }],
+      "tier": "GOLD"
+   },
+   {
+      "queue": "RANKED_TEAM_5x5",
+      "name": "Janna's Hunters",
+      "entries": [{
+         "leaguePoints": 45,
+         "isFreshBlood": false,
+         "isHotStreak": false,
+         "division": "IV",
+         "isInactive": true,
+         "isVeteran": false,
+         "playerOrTeamName": "Nombre X",
+         "playerOrTeamId": "TEAM-fa0797d0-b75d-11e3-a50b-782bcb497d6f",
+         "wins": 12
+      }],
+      "tier": "SILVER"
+   },
+   {
+      "queue": "RANKED_TEAM_3x3",
+      "name": "Rammus's Vigilantes",
+      "entries": [{
+         "leaguePoints": 45,
+         "isFreshBlood": false,
+         "isHotStreak": false,
+         "division": "I",
+         "isInactive": true,
+         "isVeteran": false,
+         "playerOrTeamName": "OP as Exodia",
+         "playerOrTeamId": "TEAM-99e1c010-c347-11e3-82e4-782bcb4ce61a",
+         "wins": 4
+      }],
+      "tier": "SILVER"
+   },
+   {
+      "queue": "RANKED_TEAM_5x5",
+      "name": "Lulu's Zealots",
+      "entries": [{
+         "leaguePoints": 28,
+         "isFreshBlood": false,
+         "isHotStreak": false,
+         "division": "V",
+         "isInactive": false,
+         "isVeteran": false,
+         "playerOrTeamName": "OP as Exodia",
+         "playerOrTeamId": "TEAM-99e1c010-c347-11e3-82e4-782bcb4ce61a",
+         "wins": 30
+      }],
+      "tier": "GOLD"
+   }
+]}

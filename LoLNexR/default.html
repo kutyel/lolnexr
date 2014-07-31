@@ -38,16 +38,22 @@
                     <td><p>Ranked Teams (5v5)</p></td>
                 </tr>
                 <tr>
-                    <td><p ng-repeat="league in leagues">{{league.name}}</p></td>
+                    <td><p>{{leagues.name}}</p></td>
+                    <td><p>{{leagues[0].name}}</p></td>
+                    <td><p>{{leagues.name}}</p></td>
                 </tr>
                 <tr>
-                    <td><img ng-repeat="league in leagues" ng-src="{{league.imageUrl}}" /></td>
+                    <td><img ng-src="images/leagues/unranked.png" /></td>
+                    <td><img ng-src="{{leagues[0].imageUrl}}" /></td>
+                    <td><img ng-src="images/leagues/unranked.png" /></td>
                 </tr>
                 <tr>
-                    <td><strong ng-repeat="league in leagues">{{league.tier}} {{league.entries[0].division}}</strong> ({{league.entries[0].leaguePoints}} LP)</td>
+                    <td><strong>{{leagues.tier}} Unranked {{leagues.entries[0].division}}</strong> ({{leagues.entries[0].leaguePoints}} LP)</td>
+                    <td><strong>{{leagues[0].tier}} {{leagues[0].entries[0].division}}</strong> ({{leagues[0].entries[0].leaguePoints}} LP)</td>
+                    <td><strong>{{leagues.tier}} Unranked {{leagues.entries[2].division}}</strong> ({{leagues.entries[2].leaguePoints}} LP)</td>
                 </tr>
             </table>
-            <p>{{leagues | json}}</p>
+            <p>{{data | json}}</p>
         </div>
     </div>
 </body>
