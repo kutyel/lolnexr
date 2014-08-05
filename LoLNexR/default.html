@@ -33,24 +33,12 @@
             <h1>{{summoner.name}}</h1>
             <table>
                 <tr>
-                    <td><p>Ranked Teams (3v3)</p></td>
-                    <td><p>Solo/Duo Queue</p></td>
-                    <td><p>Ranked Teams (5v5)</p></td>
-                </tr>
-                <tr>
-                    <td><p>{{leagues.name}}</p></td>
-                    <td><p>{{leagues[0].name}}</p></td>
-                    <td><p>{{leagues.name}}</p></td>
-                </tr>
-                <tr>
-                    <td><img ng-src="images/leagues/unranked.png" /></td>
-                    <td><img ng-src="{{leagues[0].imageUrl}}" /></td>
-                    <td><img ng-src="images/leagues/unranked.png" /></td>
-                </tr>
-                <tr>
-                    <td><strong>{{leagues.tier}} Unranked {{leagues.entries[0].division}}</strong> ({{leagues.entries[0].leaguePoints}} LP)</td>
-                    <td><strong>{{leagues[0].tier}} {{leagues[0].entries[0].division}}</strong> ({{leagues[0].entries[0].leaguePoints}} LP)</td>
-                    <td><strong>{{leagues.tier}} Unranked {{leagues.entries[2].division}}</strong> ({{leagues.entries[2].leaguePoints}} LP)</td>
+                    <td ng-repeat="league in leagues">
+                        <h3>{{league.queue}}</h3>
+                        <p>{{league.name}}</p>
+                        <img ng-src="{{league.imageUrl}}" />
+                        <strong>{{league.tier}} {{league.entries[0].division}}</strong><span> ({{league.entries[0].leaguePoints}} LP)</span>
+                    </td>
                 </tr>
             </table>
             <p>{{data | json}}</p>

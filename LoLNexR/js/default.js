@@ -72,7 +72,7 @@
                             
                             // TODO: There might be more than one possibility
                             for (var i in json[id]) {
-                            	json[id][i]["imageUrl"] = "/images/" + json[id][i].tier + "/" + json[id][i].entries[0].division + ".png";
+                            	json[id][i]["imageUrl"] = "/images/leagues/" + json[id][i].tier + "/" + json[id][i].entries[0].division + ".png";
                             	if (json[id][i].queue == "RANKED_SOLO_5x5")
                             		leagues[json[id][i].queue] = json[id][i];
                             	else if (json[id][i].queue == "RANKED_TEAM_5x5")
@@ -82,7 +82,7 @@
                             	else
                             		leagues["OTHER"+i] = json[id][i];
                             }
-                            
+                            $scope.data = json;
                             $scope.leagues = leagues;
                         });
                 });
