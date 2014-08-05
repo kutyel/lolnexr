@@ -64,12 +64,25 @@
                     $scope.summoner = summoner[name];
                     // Summoner league data
                     $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v2.4/league/by-summoner/" + summoner[name].id + "/entry?api_key=" + apikey)
-                        .success(function (league) {
-                            $scope.data = league;
-                            var leagues = league[summoner[name].id];
-                            for (var l in leagues)
-                                leagues[l]["imageUrl"] = !!league ? "images/leagues/" + leagues[l].tier + "/" + leagues[l].entries[l].division + ".png" :
-                                    "images/leagues/unranked.png";
+                        .success(function (json) {
+                            // ID of the retrieved Summoner
+                            var id = summoner[name].id;
+                            // Output JSON of leagues
+                            var leagues = {};
+                            
+                            // TODO: There might be more than one possibility
+                            for (var i in json[id]) {
+                            	json[id][i]["imageUrl"] = "/images/" + json[id][i].tier + "/" + json[id][i].entries[0].division + ".png";
+                            	if (json[id][i].queue == "RANKED_SOLO_5x5")
+                            		leagues[json[id][i].queue] = json[id][i];
+                            	else if (json[id][i].queue == "RANKED_TEAM_5x5")
+                            		leagues[json[id][i].queue] = json[id][i];
+                            	else if (json[id][i].queue == "RANKED_TEAM_3x3")
+                            		leagues[json[id][i].queue] = json[id][i];
+                            	else
+                            		leagues["OTHER"+i] = json[id][i];
+                            }
+                            
                             $scope.leagues = leagues;
                         });
                 });
