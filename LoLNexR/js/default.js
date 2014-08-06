@@ -84,7 +84,7 @@
                             // In case there is any unranked
                             for (var k in queues)
                         	    if(!leagues[queues[k]])
-                                    leagues[queues[k]] = { queue: queues[k], imageUrl: "/images/leagues/unranked.png" };
+                                    leagues[queues[k]] = { queue: queues[k], tier: "UNRANKED", imageUrl: "/images/leagues/unranked.png" };
                             
                             $scope.leagues = leagues;
                         });
