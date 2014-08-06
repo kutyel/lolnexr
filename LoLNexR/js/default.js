@@ -65,24 +65,27 @@
                     // Summoner league data
                     $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v2.4/league/by-summoner/" + summoner[name].id + "/entry?api_key=" + apikey)
                         .success(function (json) {
+                            // JSON data retrieved from service
+                            $scope.data = json;
                             // ID of the retrieved Summoner
                             var id = summoner[name].id;
                             // Output JSON of leagues
                             var leagues = {};
-                            
+                            // Fixed array of queues
+                            var queues = [ "RANKED_TEAM_3x3", "RANKED_SOLO_5x5", "RANKED_TEAM_5x5" ];
                             // TODO: There might be more than one possibility
                             for (var i in json[id]) {
                             	json[id][i]["imageUrl"] = "/images/leagues/" + json[id][i].tier + "/" + json[id][i].entries[0].division + ".png";
-                            	if (json[id][i].queue == "RANKED_SOLO_5x5")
-                            		leagues[json[id][i].queue] = json[id][i];
-                            	else if (json[id][i].queue == "RANKED_TEAM_5x5")
-                            		leagues[json[id][i].queue] = json[id][i];
-                            	else if (json[id][i].queue == "RANKED_TEAM_3x3")
-                            		leagues[json[id][i].queue] = json[id][i];
-                            	else
-                            		leagues["OTHER"+i] = json[id][i];
+                            	for (var j in queues)
+                            	    if (json[id][i].queue == queues[j])
+                            		    leagues[json[id][i].queue] = json[id][i];
                             }
-                            $scope.data = json;
+                            
+                            // In case there is any unranked
+                            for (var k in queues)
+                        	    if(!leagues[queues[k]])
+                                    leagues[queues[k]] = { queue: queues[k], imageUrl: "/images/leagues/unranked.png" };
+                            
                             $scope.leagues = leagues;
                         });
                 });
