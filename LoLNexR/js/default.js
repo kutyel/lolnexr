@@ -40,21 +40,11 @@
     // Summoners controller
     ngApp.controller('SummonersCtrl', ['$scope', '$http', function ($scope, $http) {
         
-        // Static array of regions
-        $scope.regions = 
-        [
-            { name: "BR", value: "br" },
-            { name: "EUNE", value: "eune" },
-            { name: "EUW", value: "euw" },
-            { name: "KR", value: "kr" },
-            { name: "LAS", value: "las" },
-            { name: "LAN", value: "lan" },
-            { name: "LAN", value: "na" },
-            { name: "OCE", value: "oce" },
-            { name: "TR", value: "tr" },
-            { name: "RU", value: "ru" }
-        ];
-
+        // Service returning regions from json
+        $http.get('json/regions.json').success(function(data) {
+            $scope.regions = data;
+        });
+        
         // Web service returning summoner data
         $scope.getSummoner = function (region, name) {
             $scope.summoner = {};
