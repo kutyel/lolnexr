@@ -1,12 +1,12 @@
 [
-  { name: "BR", value: "br" },
-  { name: "EUNE", value: "eune" },
-  { name: "EUW", value: "euw" },
-  { name: "KR", value: "kr" },
-  { name: "LAS", value: "las" },
-  { name: "LAN", value: "lan" },
-  { name: "LAN", value: "na" },
-  { name: "OCE", value: "oce" },
-  { name: "TR", value: "tr" },
-  { name: "RU", value: "ru" }
+  { "name": "BR", "value": "br" },
+  { "name": "EUNE", "value": "eune" },
+  { "name": "EUW", "value": "euw" },
+  { "name": "KR", "value": "kr" },
+  { "name": "LAS", "value": "las" },
+  { "name": "LAN", "value": "lan" },
+  { "name": "LAN", "value": "na" },
+  { "name": "OCE", "value": "oce" },
+  { "name": "TR", "value": "tr" },
+  { "name": "RU", "value": "ru" }
 ]
