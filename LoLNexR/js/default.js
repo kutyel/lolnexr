@@ -40,29 +40,26 @@
     // Summoners controller
     ngApp.controller('SummonersCtrl', ['$scope', '$http', function ($scope, $http) {
         
-        // Service returning regions from json
         $http.get('json/regions.json').success(function(data) {
             $scope.regions = data;
         });
         
-        // Web service returning summoner data
         $scope.getSummoner = function (region, name) {
             $scope.summoner = {};
-            // Summoner basic data
             $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v1.4/summoner/by-name/" + name + "?api_key=" + apikey)
                 .success(function (summoner) {
                     $scope.summoner = summoner[name];
-                    // Summoner league data
                     $http.get("https://" + region + ".api.pvp.net/api/lol/" + region + "/v2.4/league/by-summoner/" + summoner[name].id + "/entry?api_key=" + apikey)
                         .success(function (json) {
-                            // JSON data retrieved from service
                             $scope.data = json;
-                            // ID of the retrieved Summoner
-                            var id = summoner[name].id;
-                            // Output JSON of leagues
-                            var leagues = {};
-                            // Fixed array of queues
-                            var queues = [ "RANKED_TEAM_3x3", "RANKED_SOLO_5x5", "RANKED_TEAM_5x5" ];
+                            var id = summoner[name].id,
+                                leagues = {},
+                                queues = {
+                                   1: "RANKED_TEAM_3x3",
+                                   2: "RANKED_SOLO_5x5",
+                                   3: "RANKED_TEAM_5x5",
+                                };
+
                             // TODO: There might be more than one possibility
                             for (var i in json[id]) {
                             	json[id][i]["imageUrl"] = "/images/leagues/" + json[id][i].tier + "/" + json[id][i].entries[0].division + ".png";
@@ -76,6 +73,11 @@
                         	    if(!leagues[queues[k]])
                                     leagues[queues[k]] = { queue: queues[k], tier: "UNRANKED", imageUrl: "/images/leagues/unranked.png" };
                             
+                            // TODO:
+                            //  1. Put in the correct order.
+                            //  2. Add challenger tier.
+                            //  3. Add master tier.
+
                             $scope.leagues = leagues;
                         });
                 });
