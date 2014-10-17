@@ -54,15 +54,15 @@
                             $scope.data = json;
                             var id = summoner[name].id,
                                 leagues = {},
-                                queues = {
-                                   1: "RANKED_TEAM_3x3",
-                                   2: "RANKED_SOLO_5x5",
-                                   3: "RANKED_TEAM_5x5",
-                                };
+                                queues = [ "RANKED_TEAM_3x3", "RANKED_SOLO_5x5", "RANKED_TEAM_5x5" ];                                };
 
-                            // TODO: There might be more than one possibility
                             for (var i in json[id]) {
-                            	json[id][i]["imageUrl"] = "/images/leagues/" + json[id][i].tier + "/" + json[id][i].entries[0].division + ".png";
+                                if (json[id][i].tier == "CHALLENGER")
+                                    json[id][i]["imageUrl"] = "/images/leagues/challenger.png";
+                                else (json[id][i].tier == "MASTER")
+                                    json[id][i]["imageUrl"] = "/images/leagues/master.png";
+                                else
+                                    json[id][i]["imageUrl"] = "/images/leagues/" + json[id][i].tier + "/" + json[id][i].entries[0].division + ".png";
                             	for (var j in queues)
                             	    if (json[id][i].queue == queues[j])
                             		    leagues[json[id][i].queue] = json[id][i];
@@ -75,8 +75,6 @@
                             
                             // TODO:
                             //  1. Put in the correct order.
-                            //  2. Add challenger tier.
-                            //  3. Add master tier.
 
                             $scope.leagues = leagues;
                         });
